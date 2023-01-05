@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Master\Picture;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -15,6 +16,8 @@ class ProfileController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $request->user();
+        $pictures = Picture::query()->where('user_id', auth()->id())->get();
+
+        return view('profile', compact('pictures'));
     }
 }
