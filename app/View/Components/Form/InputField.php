@@ -6,8 +6,11 @@ use Illuminate\View\Component;
 
 class InputField extends Component
 {
-    public function __construct(public string $type, public string $name, public string $id)
-    {
+    public function __construct(
+        public string $type,
+        public string $name,
+        public ?string $placeholder = null
+    ) {
     }
 
     public function render(): \Illuminate\Contracts\View\View|\Closure|string
